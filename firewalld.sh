@@ -17,6 +17,7 @@ iptables-save > /etc/iptables/rules.v4
 apt install -y firewalld
 
 # Abrir puertos TCP
+iptables -t nat -A DOCKER -p tcp -d 127.0.0.1 --dport 15888 -j DNAT --to-destination 172.17.0.4:15888 ! -i docker0
 firewall-cmd --add-port=15888/tcp --permanent
 firewall-cmd --add-port=50051/udp --permanent
 firewall-cmd --add-port=22/tcp --permanent
