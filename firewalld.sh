@@ -17,6 +17,8 @@ iptables-save > /etc/iptables/rules.v4
 apt install -y firewalld
 
 # Abrir puertos TCP
+firewall-cmd --add-port=15888/tcp --permanent
+firewall-cmd --add-port=50051/udp --permanent
 firewall-cmd --add-port=22/tcp --permanent
 firewall-cmd --add-port=80/tcp --permanent
 firewall-cmd --add-port=443/tcp --permanent
